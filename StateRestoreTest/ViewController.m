@@ -12,7 +12,8 @@
 
 #define kItemKey @"Items"
 
-@interface ViewController (){
+@interface ViewController ()
+{
     UIButton* b;
 }
 
@@ -26,7 +27,6 @@
     [super viewDidLoad];
     self.title = @"Test for Push View";
     
-    // Do any additional setup after loading the view, typically from a nib.
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -42,12 +42,12 @@
     
     self.restorationIdentifier = @"ViewController";
     self.restorationClass = [self class];
+    self.tableView.restorationIdentifier = @"tableView";
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -57,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,5 +84,17 @@
     nav.restorationIdentifier = @"ModalNC";
     [self presentViewController:nav animated:YES completion:nil];
 }
+
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [super decodeRestorableStateWithCoder:coder];
+    
+}
+
 
 @end

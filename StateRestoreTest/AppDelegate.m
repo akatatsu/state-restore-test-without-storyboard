@@ -100,8 +100,6 @@
     }
     
     return vc;
-    
-    //return nil;
 
 }
 
